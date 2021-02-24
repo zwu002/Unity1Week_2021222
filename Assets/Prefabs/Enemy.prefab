@@ -95,6 +95,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13599a13348a06479913022a2fd4642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultSpeed: 0
+  dashSpeed: 20
+  dashTime: 0.1
+  currentSpeed: 0
+  tempo: 120
+  tempoPerMovement: 4
+  rb: {fileID: 9040310935994071836}
+  movement: {x: 0, y: 1}
 --- !u!50 &9040310935994071836
 Rigidbody2D:
   serializedVersion: 4

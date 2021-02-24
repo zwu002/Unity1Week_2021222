@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public float tempo;
-    public float timer;
 
+    private float timer;
     private float timeBetweenBeats;
 
     public GameObject enemyPrefab;
