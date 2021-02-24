@@ -2,9 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
+    public AudioSource music;
+    public bool isMusicPlaying;
+
+    public uint score;
+
     public GameObject mainMenu;
     public GameObject mainHUD;
     public GameObject nextLevelUI;
@@ -37,6 +43,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        //temporary start method
+        if (!isMusicPlaying)
+        {
+            if (Input.anyKeyDown)
+            {
+                isMusicPlaying = true;
+                music.Play();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)
