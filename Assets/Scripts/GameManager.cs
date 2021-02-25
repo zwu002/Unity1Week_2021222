@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public AudioSource music;
     public bool isMusicPlaying;
 
+    public float bpm;
+    public float timePerBeat;
+
     public uint score;
 
     public GameObject mainMenu;
@@ -38,6 +41,8 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Destroy duplicate gm");
             Destroy(gameObject);
         }
+
+        timePerBeat = 60f / bpm;
 
     }
 

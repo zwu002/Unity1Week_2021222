@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] float liveTime = 1f;
     float timer;
 
+    public string hitTag;
+
     void Start ()
     {
         timer = Time.time;
@@ -21,9 +23,20 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void OnCollisitonEnter2D (Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        Debug.Log("Enemy Hit + " + collision.gameObject);
+
+        if (collision.gameObject.CompareTag(hitTag))
+        {
+            if (hitTag == "Enemy")
+            {
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(3);
+            }
+
+            Destroy(gameObject);
+        }
+        
     }
 
 }
