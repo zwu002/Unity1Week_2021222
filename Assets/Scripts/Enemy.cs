@@ -6,12 +6,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float defaultSpeed = 0f;
-    public float dashSpeed = 100f;
-    public float dashTime = 0.1f;
-
-    public float currentSpeed;
-
     public int tempoPerMovement;
 
     private float timePerBeat;
@@ -26,8 +20,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Dash();
-
         timePerBeat = GameManager.GetInstance().timePerBeat;
         timer = Time.time;
     }
@@ -43,22 +35,16 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * currentSpeed * Time.fixedDeltaTime);
-
         if (Time.time - timer >= timePerBeat)
         {
             timer = Time.time;
-            StartCoroutine(Dash());
+            Dash();
         }
     }
 
-    IEnumerator Dash()
+    void Dash()
     {
-        currentSpeed = dashSpeed;
-
-        yield return new WaitForSeconds(dashTime);
-
-        currentSpeed = defaultSpeed;
+        gameObject.transform.Translate(movement);
     }
 
     public void TakeDamage(int damage)

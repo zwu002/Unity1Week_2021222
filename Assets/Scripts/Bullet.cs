@@ -42,6 +42,10 @@ public class Bullet : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            else
+            {
+                isPiercing = false;
+            }
         }
         
     }

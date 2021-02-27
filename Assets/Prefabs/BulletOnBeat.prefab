@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   liveTime: 1
-  damage: 3
+  damage: 2
   isPiercing: 1
   hitTag: Enemy
 --- !u!61 &6370395658460460713

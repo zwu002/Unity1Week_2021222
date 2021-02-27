@@ -9,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
     float timePerBeat;
     float timer;
 
+    public int beatsBetweenSpawn = 4;
+
     public GameObject enemyPrefab;
     public Vector2 moveDirection;
 
@@ -30,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
             isInitialised = true;
         }
 
-        if (Time.time - timer >= timePerBeat)
+        if (Time.time - timer >= timePerBeat * beatsBetweenSpawn)
         {
             timer = Time.time;
             EnemySpawn();
@@ -44,8 +46,8 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        GameObject bullet = Instantiate(enemyPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(moveDirection * 20f, ForceMode2D.Impulse);
+        GameObject enemy = Instantiate(enemyPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+        enemy.GetComponent<Enemy>().movement = moveDirection;
     }
 }
