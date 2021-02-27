@@ -13,7 +13,10 @@ public class PlayerShooting : MonoBehaviour
 
     float timePerBeat;
     float timer;
-    public float onBeatThreshold = 0.1f;
+
+    public float onBeatThresholdIndex;
+    float onBeatThreshold;
+
     public int onBeatMultiplier = 4;
     public bool onBeat = false;
 
@@ -26,6 +29,8 @@ public class PlayerShooting : MonoBehaviour
     {
         timePerBeat = GameManager.GetInstance().timePerBeat;
         timer = Time.time;
+
+        onBeatThreshold = timePerBeat * onBeatThresholdIndex / 2f; 
 
         isInitialised = false;
     }

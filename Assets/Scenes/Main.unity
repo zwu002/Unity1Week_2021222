@@ -381,7 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music: {fileID: 1904387130}
   isMusicPlaying: 0
-  bpm: 120
+  bpm: 200
   timePerBeat: 0
   score: 0
   mainMenu: {fileID: 0}
@@ -632,6 +632,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8828681302559149627, guid: 0a08244d50e5353439e53b6f319b2a67,
+        type: 3}
+      propertyPath: onBeatThreshold
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828681302559149627, guid: 0a08244d50e5353439e53b6f319b2a67,
+        type: 3}
+      propertyPath: onBeatThresholdIndex
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a08244d50e5353439e53b6f319b2a67, type: 3}
 --- !u!1 &1904387129
@@ -661,7 +671,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 30ef82c60468e9543b5f4e83898b7617, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 184bc504ba12da1458db3822de48e837, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
