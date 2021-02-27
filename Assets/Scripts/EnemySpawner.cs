@@ -22,6 +22,11 @@ public class EnemySpawner : MonoBehaviour
     public bool isInitialised = false;
     public bool isActive = false;
 
+    public bool isHorizontal;
+
+    public int dashGrid = 1;
+    public float horizontalShift = 0f;
+    public float verticalShift = 0.25f;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +74,9 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject enemy = Instantiate(enemyPrefab, gameObject.transform.position, gameObject.transform.rotation);
         Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
-        enemy.GetComponent<Enemy>().movement = moveDirection;
+
+        enemy.GetComponent<Enemy>().dashGrid = dashGrid;
+        enemy.GetComponent<Enemy>().horizontalShift = horizontalShift;
+        enemy.GetComponent<Enemy>().verticalShift = verticalShift;
     }
 }

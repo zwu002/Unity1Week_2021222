@@ -13,11 +13,13 @@ public class Enemy : MonoBehaviour
 
     public Rigidbody2D rb;
 
-    public Vector2 movement;
-
     public int health = 2;
 
     public bool isPerfectHit = false;
+
+    public int dashGrid;
+    public float horizontalShift;
+    public float verticalShift;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +48,8 @@ public class Enemy : MonoBehaviour
 
     void Dash()
     {
-        gameObject.transform.Translate(movement);
+        gameObject.transform.Translate(Vector3.up * verticalShift * dashGrid);
+        gameObject.transform.Translate(Vector3.left * horizontalShift);
     }
 
     public void TakeDamage(int damage)

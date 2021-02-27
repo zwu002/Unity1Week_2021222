@@ -119,7 +119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   liveTime: 1
   damage: 2
-  isPiercing: 1
+  isPiercing: 0
   hitTag: Enemy
 --- !u!61 &6370395658460460713
 BoxCollider2D:
