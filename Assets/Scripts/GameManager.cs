@@ -80,6 +80,9 @@ public class GameManager : MonoBehaviour
     {
         pauseUI.SetActive(true);
         isPaused = true;
+        isMusicPlaying = false;
+        music.Pause();
+
         Time.timeScale = 0;
     }
 
@@ -87,6 +90,9 @@ public class GameManager : MonoBehaviour
     {
         pauseUI.SetActive(false);
         isPaused = false;
+        isMusicPlaying = true;
+        music.Play();
+
         Time.timeScale = 1;
     }
 
@@ -100,7 +106,12 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         isGameOver = true;
+        isMusicPlaying = false;
+        music.Pause();
+
         Debug.Log("Game Over!");
+
+        Time.timeScale = 0f;
 
         mainHUD.SetActive(false);
         gameOverUI.SetActive(true);

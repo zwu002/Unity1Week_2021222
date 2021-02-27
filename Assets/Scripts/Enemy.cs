@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public Vector2 movement;
 
     public int health = 3;
+    public int damage = 1;
 
     // Start is called before the first frame update
     void Start()
