@@ -85,7 +85,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 0526ebccebcb26b4f89a3fed88a37ead, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
     type: 3}
   bulletOnBeatPrefab: {fileID: 3294824373526537324, guid: 2ca2b1f38e88b0e42bcbb087640ebef7,
     type: 3}
-  onBeatThreshold: 0.15
+  onBeatThreshold: 0.17
   onBeatMultiplier: 1
   onBeat: 0
   bulletForceNotOnBeat: 20
