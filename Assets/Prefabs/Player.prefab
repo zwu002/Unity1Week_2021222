@@ -170,7 +170,8 @@ MonoBehaviour:
     type: 3}
   bulletOnBeatPrefab: {fileID: 3294824373526537324, guid: 2ca2b1f38e88b0e42bcbb087640ebef7,
     type: 3}
-  onBeatThreshold: 0.17
+  beatIndicator: {fileID: 0}
+  onBeatThresholdIndex: 0.6
   onBeatMultiplier: 1
   onBeat: 0
   bulletForceNotOnBeat: 20
@@ -213,5 +214,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52864b43ba48ab24cbf0663ce9b17fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 3
   hitTag: Enemy

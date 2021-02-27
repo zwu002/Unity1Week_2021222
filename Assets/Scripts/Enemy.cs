@@ -15,8 +15,9 @@ public class Enemy : MonoBehaviour
 
     public Vector2 movement;
 
-    public int health = 3;
-    public int damage = 1;
+    public int health = 2;
+
+    public bool isPerfectHit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,11 +52,24 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        if (damage == 2)
+        {
+            isPerfectHit = true;
+        }
     }
 
     void Die()
     {
-        GameManager.GetInstance().score += 100;
+        if (isPerfectHit)
+        {
+            GameManager.GetInstance().perfectHit++;
+        }
+        else
+        {
+            GameManager.GetInstance().hit++;
+        }
+
         Destroy(gameObject);
     }
 }

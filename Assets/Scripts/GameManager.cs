@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
     public float bpm;
     public float timePerBeat;
 
-    public uint score;
+    public uint miss;
+    public uint hit;
+    public uint perfectHit;
+    uint ratingScore;
 
     public GameObject mainMenu;
     public GameObject mainHUD;
@@ -43,6 +46,10 @@ public class GameManager : MonoBehaviour
         }
 
         timePerBeat = 60f / bpm;
+
+        miss = 0;
+        hit = 0;
+        perfectHit = 0;
     }
 
     void Update()
@@ -119,6 +126,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
+        CleanScore();
         Restart();
     }
 
@@ -136,6 +144,13 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene("MainScene");
+    }
+
+    void CleanScore()
+    {
+        miss = 0;
+        hit = 0;
+        perfectHit = 0;
     }
 
 }

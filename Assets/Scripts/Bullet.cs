@@ -29,13 +29,16 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Enemy Hit + " + collision.gameObject);
 
         if (collision.gameObject.CompareTag(hitTag))
         {
             if (hitTag == "Enemy")
             {
+                Debug.Log("Enemy Hit + " + collision.gameObject);
+
                 collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+
+                GameManager.GetInstance().hit++;
             }
 
             if (!isPiercing)

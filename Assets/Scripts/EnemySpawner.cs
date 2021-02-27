@@ -9,12 +9,18 @@ public class EnemySpawner : MonoBehaviour
     float timePerBeat;
     float timer;
 
+    int totalBeat;
+
+    public int startBeat;
+    public int beatBeforeKill;
+
     public int beatsBetweenSpawn = 4;
 
     public GameObject enemyPrefab;
     public Vector2 moveDirection;
 
     public bool isInitialised = false;
+    public bool isActive = false;
 
 
     // Start is called before the first frame update
@@ -22,6 +28,8 @@ public class EnemySpawner : MonoBehaviour
     {
         timePerBeat = GameManager.GetInstance().timePerBeat;
         timer = Time.time;
+
+        totalBeat = 0;
     }
 
     // Update is called once per frame
@@ -32,16 +40,29 @@ public class EnemySpawner : MonoBehaviour
             isInitialised = true;
         }
 
+        if (isInitialised && totalBeat >= startBeat)
+        {
+            isActive = true;
+        }
+
+        if (isInitialised && totalBeat - startBeat >= beatBeforeKill)
+        {
+            isActive = false;
+        }
+
         if (Time.time - timer >= timePerBeat * beatsBetweenSpawn)
         {
             timer = Time.time;
+            totalBeat++;
+
             EnemySpawn();
         }
+
     }
 
     void EnemySpawn()
     {
-        if (!isInitialised)
+        if (!isInitialised || !isActive)
         {
             return;
         }

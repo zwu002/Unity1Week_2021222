@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class PlayerShooting : MonoBehaviour
@@ -10,6 +11,8 @@ public class PlayerShooting : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletNotOnBeatPrefab;
     public GameObject bulletOnBeatPrefab;
+
+    public GameObject beatIndicator;
 
     float timePerBeat;
     float timer;
@@ -28,9 +31,8 @@ public class PlayerShooting : MonoBehaviour
     void Start()
     {
         timePerBeat = GameManager.GetInstance().timePerBeat;
-        timer = Time.time;
 
-        onBeatThreshold = timePerBeat * onBeatThresholdIndex / 2f; 
+        onBeatThreshold = timePerBeat * onBeatThresholdIndex / 2f;
 
         isInitialised = false;
     }
@@ -48,6 +50,8 @@ public class PlayerShooting : MonoBehaviour
         if (!isInitialised && GameManager.GetInstance().isMusicPlaying)
         {
             isInitialised = true;
+
+            timer = Time.time + onBeatThreshold;
         }
 
             if (isInitialised && Time.time - timer + onBeatThreshold >= timePerBeat * onBeatMultiplier)
@@ -83,8 +87,11 @@ public class PlayerShooting : MonoBehaviour
         onBeat = true;
         Debug.Log("OnBeat!");
 
+        beatIndicator.GetComponent<SpriteRenderer>().enabled = true;
+
         yield return new WaitForSeconds(onBeatThreshold * 2);
 
         onBeat = false;
+        beatIndicator.GetComponent<SpriteRenderer>().enabled = false;
     }
 }
