@@ -12,11 +12,6 @@ public class GameManager : MonoBehaviour
     public float bpm;
     public float timePerBeat;
 
-    float timer;
-    public float onBeatThreshold = 0.1f;
-    public int onBeatMultiplier = 4;
-    public bool onBeat = false;
-
     public uint score;
 
     public GameObject mainMenu;
@@ -59,8 +54,6 @@ public class GameManager : MonoBehaviour
             {
                 isMusicPlaying = true;
                 music.Play();
-
-                timer = Time.time;
             }
         }
 
@@ -77,17 +70,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
-    {
-        if (isMusicPlaying)
-        {
-            if (Time.time - timer + onBeatThreshold >= timePerBeat * onBeatMultiplier)
-            {
-                timer = Time.time;
-                StartCoroutine(TriggerOnBeat());
-            }
-        }
-    }
 
     public static GameManager GetInstance()
     {
@@ -145,13 +127,4 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainScene");
     }
 
-    IEnumerator TriggerOnBeat()
-    {
-        onBeat = true;
-        Debug.Log("OnBeat!");
-
-        yield return new WaitForSeconds(onBeatThreshold * 2);
-
-        onBeat = false;
-    }
 }

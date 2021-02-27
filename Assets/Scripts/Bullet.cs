@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Jobs;
 
 public class Bullet : MonoBehaviour
 {
 
     [SerializeField] float liveTime = 1f;
     float timer;
+
+    public int damage;
+    public bool isPiercing;
 
     public string hitTag;
 
@@ -31,10 +35,13 @@ public class Bullet : MonoBehaviour
         {
             if (hitTag == "Enemy")
             {
-                collision.gameObject.GetComponent<Enemy>().TakeDamage(3);
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
             }
 
-            Destroy(gameObject);
+            if (!isPiercing)
+            {
+                Destroy(gameObject);
+            }
         }
         
     }

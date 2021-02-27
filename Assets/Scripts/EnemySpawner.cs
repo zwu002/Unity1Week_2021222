@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     float timer;
 
     public GameObject enemyPrefab;
+    public Vector2 moveDirection;
 
     public bool isInitialised = false;
 
@@ -22,7 +23,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (!isInitialised && GameManager.GetInstance().isMusicPlaying)
         {
@@ -45,6 +46,6 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject bullet = Instantiate(enemyPrefab, gameObject.transform.position, gameObject.transform.rotation);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(gameObject.transform.up * 20f, ForceMode2D.Impulse);
+        rb.AddForce(moveDirection * 20f, ForceMode2D.Impulse);
     }
 }
