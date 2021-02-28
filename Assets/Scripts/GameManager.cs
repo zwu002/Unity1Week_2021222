@@ -6,7 +6,11 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
-    public AudioSource music;
+    public AudioSource music1;
+    public AudioSource music2;
+
+    public AudioSource levelMusic;
+
     public bool isMusicPlaying;
 
     public float bpm;
@@ -19,8 +23,6 @@ public class GameManager : MonoBehaviour
 
     public GameObject mainMenu;
     public GameObject mainHUD;
-    public GameObject nextLevelUI;
-    public GameObject levelLoadingUI;
     public GameObject gameOverUI;
     public GameObject gameWinUI;
     public GameObject pauseUI;
@@ -54,15 +56,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        //temporary start method
-        if (!isMusicPlaying)
-        {
-            if (Input.anyKeyDown)
-            {
-                isMusicPlaying = true;
-                music.Play();
-            }
-        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -88,7 +81,7 @@ public class GameManager : MonoBehaviour
         pauseUI.SetActive(true);
         isPaused = true;
         isMusicPlaying = false;
-        music.Pause();
+        levelMusic.Pause();
 
         Time.timeScale = 0;
     }
@@ -98,7 +91,7 @@ public class GameManager : MonoBehaviour
         pauseUI.SetActive(false);
         isPaused = false;
         isMusicPlaying = true;
-        music.Play();
+        levelMusic.Play();
 
         Time.timeScale = 1;
     }
@@ -114,7 +107,7 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         isMusicPlaying = false;
-        music.Pause();
+        levelMusic.Pause();
 
         Debug.Log("Game Over!");
 
@@ -130,14 +123,24 @@ public class GameManager : MonoBehaviour
         Restart();
     }
 
-    public void LoadNextLevel()
-    {
-
-    }
-
-    public void LevelBegin()
+    public void Level1Begin()
     {
         mainHUD.SetActive(true);
+        mainMenu.SetActive(false);
+        isMusicPlaying = true;
+
+        levelMusic = music1;
+        levelMusic.Play();
+    }
+
+    public void Level2Begin()
+    {
+        mainHUD.SetActive(true);
+        mainMenu.SetActive(false);
+        isMusicPlaying = true;
+
+        levelMusic = music2;
+        levelMusic.Play();
     }
 
 
