@@ -30,17 +30,13 @@ public class GameManager : MonoBehaviour
     public uint miss;
     public uint hit;
     public uint perfectHit;
-    uint ratingScore;
+    public int ratingScore;
 
     public GameObject mainMenu;
     public GameObject mainHUD;
     public GameObject gameOverUI;
     public GameObject gameWinUI;
     public GameObject pauseUI;
-
-    public TextMeshProUGUI missText;
-    public TextMeshProUGUI hitText;
-    public TextMeshProUGUI perfectText;
 
     public bool isGameOver;
     public bool isPaused;
@@ -86,10 +82,6 @@ public class GameManager : MonoBehaviour
                     Resume();
                 }
             }
-
-            missText.text = miss.ToString();
-            hitText.text = hit.ToString();
-            perfectText.text = perfectHit.ToString();
 
             if (Time.time - timer - extraLevelLength >= currentMusicLength)
             {

@@ -120,7 +120,8 @@ MonoBehaviour:
   liveTime: 1
   damage: 2
   isPiercing: 0
-  bulletTag: Orange
+  bulletColourTag: Orange
+  onBeat: 1
   hitTag: Enemy
 --- !u!61 &6370395658460460713
 BoxCollider2D:

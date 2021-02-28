@@ -9,10 +9,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float timePerBeat;
     float timer;
 
-    int totalBeat;
-
+    [SerializeField] int totalBeat;
+    [SerializeField] int beatCount;
     public int startBeat;
     public int beatBeforeKill;
+
 
     public int beatsBetweenSpawn = 4;
 
@@ -50,9 +51,10 @@ public class EnemySpawner : MonoBehaviour
         if (isInitialised && totalBeat - startBeat >= beatBeforeKill)
         {
             isActive = false;
+            beatCount = 0;
         }
 
-        if (Time.time - timer >= timePerBeat * beatsBetweenSpawn)
+        if (Time.time - timer >= timePerBeat)
         {
             timer = Time.time;
             totalBeat++;
@@ -69,11 +71,16 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        GameObject enemy = Instantiate(enemyPrefab, gameObject.transform.position, gameObject.transform.rotation);
-        Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
+        if (beatCount % beatsBetweenSpawn == 0)
+        {
+            GameObject enemy = Instantiate(enemyPrefab, gameObject.transform.position, gameObject.transform.rotation);
+            Rigidbody2D rb = enemy.GetComponent<Rigidbody2D>();
 
-        enemy.GetComponent<Enemy>().dashGrid = dashGrid;
-        enemy.GetComponent<Enemy>().horizontalShift = horizontalShift;
-        enemy.GetComponent<Enemy>().verticalShift = verticalShift;
+            enemy.GetComponent<Enemy>().dashGrid = dashGrid;
+            enemy.GetComponent<Enemy>().horizontalShift = horizontalShift;
+            enemy.GetComponent<Enemy>().verticalShift = verticalShift;
+        }
+
+        beatCount++;
     }
 }
