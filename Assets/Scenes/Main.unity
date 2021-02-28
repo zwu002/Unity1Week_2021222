@@ -498,9 +498,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   music1: {fileID: 1904387130}
   music2: {fileID: 1730964930}
+  bpm1: 200
+  bpm2: 176
   levelMusic: {fileID: 0}
   isMusicPlaying: 0
-  bpm: 200
+  currentBpm: 0
   timePerBeat: 0
   miss: 0
   hit: 0
@@ -1234,6 +1236,12 @@ PrefabInstance:
       propertyPath: dashGrid
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6213803913538660587, guid: 1a9473645c27a064eb81aeb3c362ea2a,
+        type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 3795510018655364861, guid: 2cd5d93dda9bf7c4ea2019a907101283,
+        type: 3}
     - target: {fileID: 6213803913538660588, guid: 1a9473645c27a064eb81aeb3c362ea2a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1328,6 +1336,12 @@ PrefabInstance:
       propertyPath: dashGrid
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6213803913538660587, guid: 1a9473645c27a064eb81aeb3c362ea2a,
+        type: 3}
+      propertyPath: enemyPrefab
+      value: 
+      objectReference: {fileID: 3795510018655364861, guid: 2cd5d93dda9bf7c4ea2019a907101283,
+        type: 3}
     - target: {fileID: 6213803913538660588, guid: 1a9473645c27a064eb81aeb3c362ea2a,
         type: 3}
       propertyPath: m_LocalPosition.x

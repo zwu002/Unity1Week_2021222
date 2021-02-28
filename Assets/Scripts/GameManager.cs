@@ -8,12 +8,14 @@ public class GameManager : MonoBehaviour
 {
     public AudioSource music1;
     public AudioSource music2;
+    public float bpm1;
+    public float bpm2;
 
     public AudioSource levelMusic;
 
     public bool isMusicPlaying;
 
-    public float bpm;
+    public float currentBpm;
     public float timePerBeat;
 
     public uint miss;
@@ -46,12 +48,6 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Destroy duplicate gm");
             Destroy(gameObject);
         }
-
-        timePerBeat = 60f / bpm;
-
-        miss = 0;
-        hit = 0;
-        perfectHit = 0;
     }
 
     void Update()
@@ -130,6 +126,11 @@ public class GameManager : MonoBehaviour
         isMusicPlaying = true;
 
         levelMusic = music1;
+        currentBpm = bpm1;
+
+        timePerBeat = 60f / currentBpm;
+
+        CleanScore();
         levelMusic.Play();
     }
 
@@ -140,6 +141,10 @@ public class GameManager : MonoBehaviour
         isMusicPlaying = true;
 
         levelMusic = music2;
+        currentBpm = bpm2;
+        timePerBeat = 60f / currentBpm;
+
+        CleanScore();
         levelMusic.Play();
     }
 

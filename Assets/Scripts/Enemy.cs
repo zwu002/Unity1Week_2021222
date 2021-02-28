@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     public Rigidbody2D rb;
 
     public int health = 2;
+    public string colourTag;
 
     public bool isPerfectHit = false;
 

@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     public int damage;
     public bool isPiercing;
 
+    public string bulletTag;
     public string hitTag;
 
     void Start ()
@@ -36,9 +37,12 @@ public class Bullet : MonoBehaviour
             {
                 Debug.Log("Enemy Hit + " + collision.gameObject);
 
-                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                if (bulletTag == collision.gameObject.GetComponent<Enemy>().colourTag)
+                {
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
 
-                GameManager.GetInstance().hit++;
+                    GameManager.GetInstance().hit++;
+                }            
             }
 
             if (!isPiercing)

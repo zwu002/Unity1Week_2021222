@@ -9,12 +9,15 @@ public class PlayerShooting : MonoBehaviour
     public bool isInitialised = false;
 
     public Transform firePoint;
-    public GameObject bulletNotOnBeatPrefab;
-    public GameObject bulletOnBeatPrefab;
+
+    public GameObject bulletNotOnBeatPrefabRed;
+    public GameObject bulletOnBeatPrefabRed;
+    public GameObject bulletNotOnBeatPrefabOrange;
+    public GameObject bulletOnBeatPrefabOrange;
 
     public GameObject beatIndicator;
 
-    float timePerBeat;
+    [SerializeField] float timePerBeat;
     float timer;
 
     public float onBeatThresholdIndex;
@@ -30,10 +33,6 @@ public class PlayerShooting : MonoBehaviour
 
     void Start()
     {
-        timePerBeat = GameManager.GetInstance().timePerBeat;
-
-        onBeatThreshold = timePerBeat * onBeatThresholdIndex / 2f;
-
         isInitialised = false;
     }
 
@@ -41,7 +40,12 @@ public class PlayerShooting : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            PlayerShoot();
+            PlayerShootRed();
+        }
+
+        if (Input.GetButtonDown("Fire2"))
+        {
+            PlayerShootOrange();
         }
     }
 
@@ -52,6 +56,10 @@ public class PlayerShooting : MonoBehaviour
             isInitialised = true;
 
             timer = Time.time + onBeatThreshold;
+
+            timePerBeat = GameManager.GetInstance().timePerBeat;
+
+            onBeatThreshold = timePerBeat * onBeatThresholdIndex / 2f;
         }
 
             if (isInitialised && Time.time - timer + onBeatThreshold >= timePerBeat * onBeatMultiplier)
@@ -61,19 +69,40 @@ public class PlayerShooting : MonoBehaviour
             }
     }
 
-    void PlayerShoot()
+    void PlayerShootRed()
     {
         GameObject bulletPrefab;
         float bulletForce;
 
         if (onBeat)
         {
-            bulletPrefab = bulletOnBeatPrefab;
+            bulletPrefab = bulletOnBeatPrefabRed;
             bulletForce = bulletForceOnBeat;
         }
         else 
         {
-            bulletPrefab = bulletNotOnBeatPrefab;
+            bulletPrefab = bulletNotOnBeatPrefabRed;
+            bulletForce = bulletForceNotOnBeat;
+        }
+
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        rb.AddForce(firePoint.up * bulletForce, ForceMode2D.Impulse);
+    }
+
+    void PlayerShootOrange()
+    {
+        GameObject bulletPrefab;
+        float bulletForce;
+
+        if (onBeat)
+        {
+            bulletPrefab = bulletOnBeatPrefabOrange;
+            bulletForce = bulletForceOnBeat;
+        }
+        else
+        {
+            bulletPrefab = bulletNotOnBeatPrefabOrange;
             bulletForce = bulletForceNotOnBeat;
         }
 

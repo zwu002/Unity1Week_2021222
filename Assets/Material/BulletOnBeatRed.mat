@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BulletOnBeat
+  m_Name: BulletOnBeatRed
   m_Shader: {fileID: -6465566751694194690, guid: c338ae0a1d52daa43b70f795676102e1,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA

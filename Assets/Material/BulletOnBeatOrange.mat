@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bullet
+  m_Name: BulletOnBeatOrange
   m_Shader: {fileID: -6465566751694194690, guid: c338ae0a1d52daa43b70f795676102e1,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
@@ -25,11 +25,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: c593a9b1c8a2a96479ea983327c8a907, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8afbdc75d8cc61d47b2cba2921eb75ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: c593a9b1c8a2a96479ea983327c8a907, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8afbdc75d8cc61d47b2cba2921eb75ea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -49,7 +49,7 @@ Material:
     m_Colors:
     - Color_FA0055F4: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissiomColour: {r: 1.4980392, g: 0.11764706, b: 0.11764706, a: 0}
+    - _EmissiomColour: {r: 1.5522451, g: 0.49066645, b: 0.17066567, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColour: {r: 1, g: 0.5882353, b: 0.5882353, a: 1}
+    - _MainColour: {r: 0.7882353, g: 0.49803922, b: 0.3019608, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    float timePerBeat;
+    [SerializeField] float timePerBeat;
     float timer;
 
     int totalBeat;
@@ -28,14 +28,6 @@ public class EnemySpawner : MonoBehaviour
     public float horizontalShift = 0f;
     public float verticalShift = 0.25f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        timePerBeat = GameManager.GetInstance().timePerBeat;
-        timer = Time.time;
-
-        totalBeat = 0;
-    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -43,6 +35,11 @@ public class EnemySpawner : MonoBehaviour
         if (!isInitialised && GameManager.GetInstance().isMusicPlaying)
         {
             isInitialised = true;
+
+            timePerBeat = GameManager.GetInstance().timePerBeat;
+            timer = Time.time;
+
+            totalBeat = 0;
         }
 
         if (isInitialised && totalBeat >= startBeat)

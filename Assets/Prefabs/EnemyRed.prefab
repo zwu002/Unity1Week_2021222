@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9040310935994071836}
   - component: {fileID: 1502252721333307286}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyRed
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,9 +98,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tempoPerMovement: 4
   rb: {fileID: 9040310935994071836}
-  movement: {x: 0, y: 0}
   health: 2
-  damage: 1
+  colourTag: Red
+  isPerfectHit: 0
+  dashGrid: 0
+  horizontalShift: 0
+  verticalShift: 0
 --- !u!50 &9040310935994071836
 Rigidbody2D:
   serializedVersion: 4

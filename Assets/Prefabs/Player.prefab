@@ -248,11 +248,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInitialised: 0
   firePoint: {fileID: 181397575}
-  bulletNotOnBeatPrefab: {fileID: 3294824373526537324, guid: 8d9ee7aa1db8e0748a9a06e0ad8718ae,
+  bulletNotOnBeatPrefabRed: {fileID: 3294824373526537324, guid: 8d9ee7aa1db8e0748a9a06e0ad8718ae,
     type: 3}
-  bulletOnBeatPrefab: {fileID: 3294824373526537324, guid: 2ca2b1f38e88b0e42bcbb087640ebef7,
+  bulletOnBeatPrefabRed: {fileID: 3294824373526537324, guid: 2ca2b1f38e88b0e42bcbb087640ebef7,
     type: 3}
-  beatIndicator: {fileID: 0}
+  bulletNotOnBeatPrefabOrange: {fileID: 3294824373526537324, guid: c65957b31ff189b419d9f1a2bd1402ce,
+    type: 3}
+  bulletOnBeatPrefabOrange: {fileID: 3294824373526537324, guid: 1a033c701f2c64d458db3974057c9471,
+    type: 3}
+  beatIndicator: {fileID: 4974982975048533888}
+  timePerBeat: 0
   onBeatThresholdIndex: 0.6
   onBeatMultiplier: 1
   onBeat: 0
