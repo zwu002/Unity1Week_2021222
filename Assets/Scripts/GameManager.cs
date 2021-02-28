@@ -27,9 +27,9 @@ public class GameManager : MonoBehaviour
     public float currentBpm;
     public float timePerBeat;
 
-    public uint miss;
-    public uint hit;
-    public uint perfectHit;
+    public int miss;
+    public int hit;
+    public int perfectHit;
     public int ratingScore;
 
     public GameObject mainMenu;
@@ -83,6 +83,18 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+            if (Time.time - timer - extraLevelLength >= currentMusicLength - 6f)
+            {
+                if (cameraShakeMagnitude > 0)
+                {
+                    cameraShakeMaxMagnitude -= 0.02f;
+                }
+                else
+                {
+                    cameraShakeMagnitude = 0f;
+                }
+            }
+
             if (Time.time - timer - extraLevelLength >= currentMusicLength)
             {
                 GameWin();
@@ -127,6 +139,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("You Won!");
 
         Time.timeScale = 0f;
+
+        ratingScore = hit * 1 + perfectHit * 2 - miss * 5;
 
         mainHUD.SetActive(false);
         gameWinUI.SetActive(true);

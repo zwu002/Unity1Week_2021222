@@ -69,10 +69,8 @@ public class Enemy : MonoBehaviour
         {
             GameManager.GetInstance().perfectHit++;
         }
-        else
-        {
-            GameManager.GetInstance().hit++;
-        }
+
+        GameManager.GetInstance().hit++;
 
         Destroy(gameObject);
     }

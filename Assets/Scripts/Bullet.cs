@@ -59,8 +59,6 @@ public class Bullet : MonoBehaviour
                     {
                         GameManager.GetInstance().cameraShakeMagnitude = GameManager.GetInstance().cameraShakeMaxMagnitude;
                     }
-
-                    GameManager.GetInstance().hit++;
                 }            
             }
 
