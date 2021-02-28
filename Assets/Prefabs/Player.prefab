@@ -257,6 +257,10 @@ MonoBehaviour:
   bulletOnBeatPrefabOrange: {fileID: 3294824373526537324, guid: 1a033c701f2c64d458db3974057c9471,
     type: 3}
   beatIndicator: {fileID: 4974982975048533888}
+  colorRed: {r: 0.7490196, g: 0.05882353, b: 0.05882353, a: 1}
+  colorEmissiveRed: {r: 2.670157, g: 0.20942408, b: 0.20942408, a: 0}
+  colorOrange: {r: 0.7490196, g: 0.23921569, b: 0.08235294, a: 1}
+  colorEmissiveOrange: {r: 1.5522451, g: 0.49066645, b: 0.17066567, a: 0}
   timePerBeat: 0
   onBeatThresholdIndex: 0.6
   onBeatMultiplier: 1

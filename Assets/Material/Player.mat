@@ -50,6 +50,7 @@ Material:
     - Color_FA0055F4: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissiomColour: {r: 2.670157, g: 0.20942408, b: 0.20942408, a: 0}
+    - _EmissionColour: {r: 2.670157, g: 0.20942408, b: 0.20942408, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _MainColour: {r: 1, g: 0.7058824, b: 0.7058824, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

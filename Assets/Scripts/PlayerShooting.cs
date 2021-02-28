@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
 using EZCameraShake;
 
 public class PlayerShooting : MonoBehaviour
@@ -17,6 +16,11 @@ public class PlayerShooting : MonoBehaviour
     public GameObject bulletOnBeatPrefabOrange;
 
     public GameObject beatIndicator;
+
+    [SerializeField] Color colorRed;
+    [SerializeField] [ColorUsage(true, true)] Color colorEmissiveRed;
+    [SerializeField] Color colorOrange;
+    [SerializeField] [ColorUsage(true, true)] Color colorEmissiveOrange;
 
     [SerializeField] float timePerBeat;
     float timer;
@@ -43,11 +47,16 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             PlayerShootRed();
+            beatIndicator.GetComponent<SpriteRenderer>().material.SetColor("_MainColour", colorRed);
+            beatIndicator.GetComponent<SpriteRenderer>().material.SetColor("_EmissionColour", colorEmissiveRed);
         }
 
         if (Input.GetButtonDown("Fire2"))
         {
             PlayerShootOrange();
+            beatIndicator.GetComponent<SpriteRenderer>().material.SetColor("_MainColour", colorOrange);
+            beatIndicator.GetComponent<SpriteRenderer>().material.SetColor("_EmissionColour", colorEmissiveOrange);
+
         }
     }
 

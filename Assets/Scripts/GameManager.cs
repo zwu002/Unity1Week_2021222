@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.SocialPlatforms.Impl;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,6 +38,10 @@ public class GameManager : MonoBehaviour
     public GameObject gameWinUI;
     public GameObject pauseUI;
 
+    public TextMeshProUGUI missText;
+    public TextMeshProUGUI hitText;
+    public TextMeshProUGUI perfectText;
+
     public bool isGameOver;
     public bool isPaused;
 
@@ -67,23 +73,30 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
-        if (isInLevel && Input.GetKeyDown(KeyCode.Escape))
+        if (isInLevel)
         {
-            if (!isPaused)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Pause();
+                if (!isPaused)
+                {
+                    Pause();
+                }
+                else
+                {
+                    Resume();
+                }
             }
-            else
+
+            missText.text = miss.ToString();
+            hitText.text = hit.ToString();
+            perfectText.text = perfectHit.ToString();
+
+            if (Time.time - timer - extraLevelLength >= currentMusicLength)
             {
-                Resume();
+                GameWin();
             }
         }
 
-        if (isInLevel && Time.time - timer - extraLevelLength >= currentMusicLength)
-        {
-            GameWin();
-        }
     }
 
 
