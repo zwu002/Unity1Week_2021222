@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -388,13 +389,29 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 874692117}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ab8353b5ebd32545867da143199a814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DefaultPosInfluence: {x: 0.15, y: 0.15, z: 0.15}
+  DefaultRotInfluence: {x: 1.5, y: 1.5, z: 1}
+  RestPositionOffset: {x: 0, y: 0, z: 0}
+  RestRotationOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &535057402
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,7 +517,13 @@ MonoBehaviour:
   music2: {fileID: 1730964930}
   bpm1: 200
   bpm2: 176
+  music1Length: 0
+  music2Length: 0
+  extraLevelLength: 5
   levelMusic: {fileID: 0}
+  timer: 0
+  currentMusicLength: 0
+  isInLevel: 0
   isMusicPlaying: 0
   currentBpm: 0
   timePerBeat: 0
@@ -514,6 +537,8 @@ MonoBehaviour:
   pauseUI: {fileID: 822384205}
   isGameOver: 0
   isPaused: 0
+  cameraShakeMagnitude: 0
+  cameraShakeMaxMagnitude: 5
 --- !u!4 &623567764
 Transform:
   m_ObjectHideFlags: 0
@@ -534,6 +559,37 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7455189550347976493}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &874692116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 874692117}
+  m_Layer: 0
+  m_Name: CameraHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &874692117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874692116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 519420032}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &943797129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,6 +1102,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onBeatThresholdIndex
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828681302559149627, guid: 0a08244d50e5353439e53b6f319b2a67,
+        type: 3}
+      propertyPath: cameraShakeMaxMagnitude
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a08244d50e5353439e53b6f319b2a67, type: 3}

@@ -41,6 +41,15 @@ public class Bullet : MonoBehaviour
                 {
                     collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
 
+                    if (GameManager.GetInstance().cameraShakeMagnitude < GameManager.GetInstance().cameraShakeMaxMagnitude)
+                    {
+                        GameManager.GetInstance().cameraShakeMagnitude += (damage - 0.8f) * 0.5f;
+                    }
+                    else
+                    {
+                        GameManager.GetInstance().cameraShakeMagnitude = GameManager.GetInstance().cameraShakeMaxMagnitude;
+                    }
+
                     GameManager.GetInstance().hit++;
                 }            
             }

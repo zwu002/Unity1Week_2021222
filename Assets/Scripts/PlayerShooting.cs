@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
+using EZCameraShake;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class PlayerShooting : MonoBehaviour
 
     public float bulletForceNotOnBeat = 20f;
     public float bulletForceOnBeat = 50f;
+
 
 
     void Start()
@@ -117,6 +119,17 @@ public class PlayerShooting : MonoBehaviour
         Debug.Log("OnBeat!");
 
         beatIndicator.GetComponent<SpriteRenderer>().enabled = true;
+
+        if (GameManager.GetInstance().cameraShakeMagnitude > 0)
+        {
+            GameManager.GetInstance().cameraShakeMagnitude -= 0.25f;
+        }
+        else
+        {
+            GameManager.GetInstance().cameraShakeMagnitude = 0;
+        }
+
+        CameraShaker.Instance.ShakeOnce(GameManager.GetInstance().cameraShakeMagnitude, 3f, onBeatThreshold, 0.05f);
 
         yield return new WaitForSeconds(onBeatThreshold * 2);
 

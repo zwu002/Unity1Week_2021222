@@ -11,8 +11,15 @@ public class GameManager : MonoBehaviour
     public float bpm1;
     public float bpm2;
 
-    public AudioSource levelMusic;
+    [SerializeField] float music1Length;
+    [SerializeField] float music2Length;
+    public float extraLevelLength = 5f;
 
+    public AudioSource levelMusic;
+    [SerializeField] float timer;
+    [SerializeField] float currentMusicLength;
+
+    public bool isInLevel;
     public bool isMusicPlaying;
 
     public float currentBpm;
@@ -32,6 +39,9 @@ public class GameManager : MonoBehaviour
     public bool isGameOver;
     public bool isPaused;
 
+    public float cameraShakeMagnitude;
+    public float cameraShakeMaxMagnitude = 5f;
+
     static GameManager instance = null;
 
     void Awake()
@@ -48,12 +58,17 @@ public class GameManager : MonoBehaviour
             Debug.LogWarning("Destroy duplicate gm");
             Destroy(gameObject);
         }
+
+        isInLevel = false;
+
+        music1Length = music1.clip.length;
+        music2Length = music2.clip.length;
     }
 
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (isInLevel && Input.GetKeyDown(KeyCode.Escape))
         {
             if (!isPaused)
             {
@@ -63,6 +78,11 @@ public class GameManager : MonoBehaviour
             {
                 Resume();
             }
+        }
+
+        if (isInLevel && Time.time - timer - extraLevelLength >= currentMusicLength)
+        {
+            GameWin();
         }
     }
 
@@ -94,8 +114,16 @@ public class GameManager : MonoBehaviour
 
     public void GameWin()
     {
+        isInLevel = false;
+        isMusicPlaying = false;
+
+        levelMusic.Pause();
+
         Debug.Log("You Won!");
 
+        Time.timeScale = 0f;
+
+        mainHUD.SetActive(false);
         gameWinUI.SetActive(true);
     }
 
@@ -103,6 +131,8 @@ public class GameManager : MonoBehaviour
     {
         isGameOver = true;
         isMusicPlaying = false;
+        isInLevel = false;
+
         levelMusic.Pause();
 
         Debug.Log("Game Over!");
@@ -124,6 +154,7 @@ public class GameManager : MonoBehaviour
         mainHUD.SetActive(true);
         mainMenu.SetActive(false);
         isMusicPlaying = true;
+        isInLevel = true;
 
         levelMusic = music1;
         currentBpm = bpm1;
@@ -132,6 +163,9 @@ public class GameManager : MonoBehaviour
 
         CleanScore();
         levelMusic.Play();
+
+        currentMusicLength = music1Length;
+        timer = Time.time;
     }
 
     public void Level2Begin()
@@ -139,6 +173,7 @@ public class GameManager : MonoBehaviour
         mainHUD.SetActive(true);
         mainMenu.SetActive(false);
         isMusicPlaying = true;
+        isInLevel = true;
 
         levelMusic = music2;
         currentBpm = bpm2;
@@ -146,6 +181,9 @@ public class GameManager : MonoBehaviour
 
         CleanScore();
         levelMusic.Play();
+
+        currentMusicLength = music2Length;
+        timer = Time.time;
     }
 
 
