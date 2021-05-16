@@ -9,7 +9,7 @@ public class ScoreUIGrabber : MonoBehaviour
     int miss;
     int hit;
     int perfectHit;
-    int ratingScore;
+    float ratingScore;
 
     public TextMeshProUGUI missText;
     public TextMeshProUGUI hitText;

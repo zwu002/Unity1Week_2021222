@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] float music2Length;
     public float extraLevelLength = 5f;
 
+    public GameObject level1Spawners;
+    public GameObject level2Spawners;
+
+    public float level1ScoreMultiplier;
+    public float level2ScoreMultiplier;
+    float scoreMultiplier;
+
     public AudioSource levelMusic;
     [SerializeField] float timer;
     [SerializeField] float currentMusicLength;
@@ -30,7 +37,7 @@ public class GameManager : MonoBehaviour
     public int miss;
     public int hit;
     public int perfectHit;
-    public int ratingScore;
+    public float ratingScore;
 
     public GameObject mainMenu;
     public GameObject mainHUD;
@@ -140,7 +147,7 @@ public class GameManager : MonoBehaviour
 
         Time.timeScale = 0f;
 
-        ratingScore = hit * 1 + perfectHit * 2 - miss * 5;
+        ratingScore = (hit * 1 + perfectHit * 2 - miss * 5) * scoreMultiplier;
 
         mainHUD.SetActive(false);
         gameWinUI.SetActive(true);
@@ -172,6 +179,8 @@ public class GameManager : MonoBehaviour
     {
         mainHUD.SetActive(true);
         mainMenu.SetActive(false);
+        level1Spawners.SetActive(true);
+        level2Spawners.SetActive(false);
         isMusicPlaying = true;
         isInLevel = true;
 
@@ -185,12 +194,16 @@ public class GameManager : MonoBehaviour
 
         currentMusicLength = music1Length;
         timer = Time.time;
+
+        scoreMultiplier = level1ScoreMultiplier;
     }
 
     public void Level2Begin()
     {
         mainHUD.SetActive(true);
         mainMenu.SetActive(false);
+        level1Spawners.SetActive(false);
+        level2Spawners.SetActive(true);
         isMusicPlaying = true;
         isInLevel = true;
 
@@ -201,8 +214,10 @@ public class GameManager : MonoBehaviour
         CleanScore();
         levelMusic.Play();
 
-        currentMusicLength = music2Length;
+        currentMusicLength = music2Length + 3f;
         timer = Time.time;
+
+        scoreMultiplier = level2ScoreMultiplier;
     }
 
 
